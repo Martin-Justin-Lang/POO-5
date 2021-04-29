@@ -2,8 +2,10 @@
 
 
 require_once  '../vehicule.php';
+require_once 'LightableInterface.php';
 
-class Camion extends vehicule
+
+class Camion extends vehicule implements LightableInterface
 {
 
     public const ALLOWED_ENERGIES = [
@@ -22,6 +24,17 @@ private int $load = 0;
         $this->energy = $energy;
         $this->setStorageCapacity($storageCapacity);
     }
+
+    public function switchOn(): bool
+    {
+        return true ;
+    }
+
+    public function switchOff(): bool
+    {
+        return false ;
+    }
+
 
     public function getEnergy(): string
     {
